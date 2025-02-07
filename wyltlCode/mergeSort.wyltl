@@ -1,0 +1,66 @@
+print("Merge Sort with Wyltl").
+
+suppose mergeSort is compose(myArrayToSort) {
+    if (length(myArrayToSort) below 2) {
+        return myArrayToSort.
+    } else {
+        suppose mid is length(myArrayToSort) over 2.
+        suppose leftArray is sliceArray(myArrayToSort, 0, mid).
+        suppose rightArray is sliceArray(myArrayToSort, mid, length(myArrayToSort)).
+
+        suppose sortedLeft is mergeSort(leftArray).
+        suppose sortedRight is mergeSort(rightArray).
+
+        return merge(sortedLeft, sortedRight).
+    }
+}
+
+suppose sliceArray is compose(array, start, end) {
+    suppose sliced is [].
+    suppose i is start.
+    while (i below end) {
+        suppose sliced is pushArrayElement(sliced, array[i]).
+        suppose i is i plus 1.
+    }
+    return sliced.
+}
+
+
+suppose merge is compose(left, right) {
+    suppose result is [].
+    suppose i is 0.
+    suppose j is 0.
+
+    while (i below length(left) and j below length(right)) {
+        if (left[i] below right[j] or left[i] equals right[j]) {
+            suppose result is pushArrayElement(result, left[i]).
+            suppose i is i plus 1.
+        } else {
+            suppose result is pushArrayElement(result, right[j]).
+            suppose j is j plus 1.
+        }
+    }
+
+    while (i below length(left)) {
+        suppose result is pushArrayElement(result, left[i]).
+        suppose i is i plus 1.
+    }
+
+    while (j below length(right)) {
+        suppose result is pushArrayElement(result, right[j]).
+        suppose j is j plus 1.
+    }
+
+    return result.
+}
+
+suppose myArrayToSort is [5, 1, 4, 2, 8, minus 3, 9, 4, minus 10, 22, 1, 55, minus 2].
+print("Unsorted array for Merge Sort:").
+print(myArrayToSort).
+
+suppose sortedArray is mergeSort(myArrayToSort).
+
+print("Sorted array using Merge Sort:").
+print(sortedArray).
+
+print("Finished Merge Sort.").

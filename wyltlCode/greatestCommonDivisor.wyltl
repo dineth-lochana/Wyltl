@@ -1,0 +1,31 @@
+print("Euclidean Algorithm for GCD in Wyltl").
+
+print("Enter the first number:").
+suppose numOne is inputNumber().
+
+print("Enter the second number:").
+suppose numTwo is inputNumber(). 
+
+suppose gcd is compose(a, b) {
+  while (b nequals 0) {
+    suppose temp is b.
+    suppose b is a modulo b.
+    suppose a is temp.
+  }
+  return a.
+}
+
+suppose gcd_euclidean is compose(a, b) {
+  while (b nequals 0) {
+    suppose temp is b.
+    suppose b is a modulo b. 
+    suppose a is temp.
+  }
+  return a.
+}
+
+suppose resultGCD is gcd_euclidean(numOne , numTwo ).
+
+print("GCD of " plus numOne plus " and " plus numTwo  plus " is: " plus resultGCD).
+
+print("Finished Euclidean Algorithm for GCD.").

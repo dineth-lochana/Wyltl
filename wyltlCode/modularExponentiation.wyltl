@@ -1,0 +1,30 @@
+print("Modular Exponentiation in Wyltl").
+
+suppose modularExponentiation is compose(base, exponent, modulus) {
+    if (modulus equals 1) {
+        return 0.
+    }
+    suppose result is 1.
+    suppose base_val is base modulo modulus.
+    while (exponent above 0) {
+        if (exponent modulo 2 equals 1) {
+            suppose result is (result times base_val) modulo modulus.
+        }
+        suppose exponent is exponent over 2.
+        suppose base_val is (base_val times base_val) modulo modulus.
+    }
+    return result.
+}
+
+print("Modular Exponentiation Start:").
+print("Enter base:").
+suppose baseInput is inputNumber().
+print("Enter exponent:").
+suppose exponentInput is inputNumber().
+print("Enter modulus:").
+suppose modulusInput is inputNumber().
+
+suppose resultModExp is modularExponentiation(baseInput, exponentInput, modulusInput).
+print(baseInput plus " raised to the power " plus exponentInput plus " modulo " plus modulusInput plus " is: " plus resultModExp).
+
+print("Finished Modular Exponentiation Algorithm.").

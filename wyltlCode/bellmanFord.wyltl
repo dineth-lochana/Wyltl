@@ -1,0 +1,80 @@
+print("Bellman-Ford Algorithm in Wyltl").
+
+suppose bellmanFord is compose(edges, source, numNodes) {
+    suppose dist is [].
+    suppose i_init_dist is 0
+    while(i_init_dist below numNodes){
+        suppose dist is pushArrayElement(dist, 99999).
+        suppose i_init_dist is i_init_dist plus 1
+    }
+    suppose dist is changeArrayElement(dist, source, 0).
+
+    suppose iterationCount is 1.
+    while (iterationCount below numNodes) {
+        suppose edgeIndex is 0.
+        while (edgeIndex below length(edges)) {
+            suppose edge is edges[edgeIndex]. 
+            suppose u is edge[0].
+            suppose v is edge[1].
+            suppose weight is edge[2].
+
+            if (dist[u] nequals 99999 and dist[u] plus weight below dist[v]) {
+                suppose dist is changeArrayElement(dist, v, dist[u] plus weight).
+            }
+            suppose edgeIndex is edgeIndex plus 1.
+        }
+        suppose iterationCount is iterationCount plus 1.
+    }
+
+  
+    suppose negativeCycleDetected is 0.
+    suppose edgeIndex_cycleCheck is 0.
+    while (edgeIndex_cycleCheck below length(edges)) {
+        suppose edge is edges[edgeIndex_cycleCheck].
+        suppose u is edge[0].
+        suppose v is edge[1].
+        suppose weight is edge[2].
+        if (dist[u] nequals 99999 and dist[u] plus weight below dist[v]) {
+            suppose negativeCycleDetected is 1.
+            print("Negative cycle detected!").
+            return []. 
+        }
+        suppose edgeIndex_cycleCheck is edgeIndex_cycleCheck plus 1.
+    }
+
+    if(negativeCycleDetected equals 0){
+        return dist.
+    } else {
+        return []. 
+    }
+
+}
+
+print("Bellman-Ford Algorithm Example").
+
+suppose graphEdgesBF is [
+    [0, 1, minus 1],
+    [0, 2, 4],
+    [1, 2, 3],
+    [1, 3, 2],
+    [1, 4, 2],
+    [3, 2, 5],
+    [3, 1, 1],
+    [4, 3, minus 3]
+]. 
+
+suppose sourceNodeBF is 0.
+suppose numNodesBF is 5. 
+
+suppose shortestDistancesBF is bellmanFord(graphEdgesBF, sourceNodeBF, numNodesBF).
+
+if(length(shortestDistancesBF) above 0){ 
+    print("Shortest distances from source node " plus sourceNodeBF plus ":").
+    suppose i_bf_result is 0
+    while (i_bf_result below numNodesBF) {
+        print("Node " plus i_bf_result plus ": " plus shortestDistancesBF[i_bf_result]).
+        suppose i_bf_result is i_bf_result plus 1.
+    }
+}
+
+print("Finished Bellman-Ford Algorithm.").

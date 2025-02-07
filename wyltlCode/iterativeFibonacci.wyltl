@@ -1,0 +1,27 @@
+print("Iterative Fibonacci with Wyltl (Dynamic Programming)").
+
+suppose fibonacciIterative is compose(n) {
+    if (n equals 0) {
+        return 0.
+    }
+    if (n equals 1) {
+        return 1.
+    }
+
+    suppose fibArray is [0, 1].
+
+    suppose i is 2.
+    while (i below n plus 1) {
+        suppose nextFib is fibArray[i minus 1] plus fibArray[i minus 2].
+        suppose fibArray is pushArrayElement(fibArray, nextFib).
+        suppose i is i plus 1.
+    }
+    return fibArray[n].
+}
+
+print("Enter a number to calculate Fibonacci iteratively:").
+suppose fibInput is inputNumber().
+suppose resultFibIterative is fibonacciIterative(fibInput).
+print("Fibonacci of " plus fibInput plus " (iterative) is: " plus resultFibIterative).
+
+print("Finished Iterative Fibonacci.").

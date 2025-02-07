@@ -1,0 +1,54 @@
+print("Depth-First Search (DFS) in Wyltl").
+
+suppose dfsRecursive is compose(graph, currentNode, visited, dfsResult, numNodes) {
+    suppose visited is changeArrayElement(visited, currentNode, 1).
+    suppose dfsResult is pushArrayElement(dfsResult, currentNode).
+    print("Visiting node: " plus currentNode).
+
+    suppose neighborNode is 0.
+    while (neighborNode below numNodes) {
+        if (graph[currentNode][neighborNode] equals 1 and visited[neighborNode] equals 0) {
+            suppose dfsRecursiveResult is dfsRecursive(graph, neighborNode, visited, dfsResult, numNodes).
+            suppose dfsResult is dfsRecursiveResult.
+        }
+        suppose neighborNode is neighborNode plus 1.
+    }
+    return dfsResult.
+}
+
+
+suppose dfs is compose(graph, startNode, numNodes) {
+    suppose visited is [].
+    suppose dfsResult is [].
+
+    suppose i is 0.
+    while (i below numNodes) {
+        suppose visited is pushArrayElement(visited, 0).
+        suppose i is i plus 1.
+    }
+
+    suppose finalDfsResult is dfsRecursive(graph, startNode, visited, dfsResult, numNodes).
+    return finalDfsResult.
+}
+
+
+print("Example Graph (Adjacency Matrix for DFS):").
+suppose graphDFS is [
+    [0, 1, 1, 0, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 0, 1],
+    [0, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0]
+].
+print(graphDFS).
+
+suppose startNodeDFS is 0.
+suppose numNodesDFS is length(graphDFS).
+
+print("DFS Traversal starting from node " plus startNodeDFS plus ":").
+suppose dfsTraversalResult is dfs(graphDFS, startNodeDFS, numNodesDFS).
+
+print("DFS Traversal Order:").
+print(dfsTraversalResult).
+
+print("Finished Depth-First Search (DFS).").

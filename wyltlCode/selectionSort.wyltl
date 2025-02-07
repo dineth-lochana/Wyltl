@@ -1,0 +1,28 @@
+print("Selection Sort with Wyltl").
+
+suppose myArray is [5, 1, 4, 2, 8, minus 3, 9, 4].
+print("Unsorted array:").
+print(myArray).
+
+suppose n is length(myArray).
+suppose outerCount is 0.
+
+while (outerCount below n minus 1) {
+    suppose minIndex is outerCount.
+    suppose innerCount is outerCount plus 1.
+    while (innerCount below n) {
+        if (myArray[innerCount] below myArray[minIndex]) {
+            suppose minIndex is innerCount.
+        }
+        suppose innerCount is innerCount plus 1.
+    }
+    if (minIndex nequals outerCount) { 
+        suppose temp is myArray[outerCount].
+        suppose myArray is changeArrayElement(myArray, outerCount, myArray[minIndex]).
+        suppose myArray is changeArrayElement(myArray, minIndex, temp).
+    }
+    suppose outerCount is outerCount plus 1.
+}
+
+print("Sorted array using Selection Sort:").
+print(myArray).

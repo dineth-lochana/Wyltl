@@ -1,0 +1,70 @@
+print("Knuth-Morris-Pratt (KMP) Algorithm in Wyltl").
+
+suppose computePrefixFunction is compose(pattern) {
+    suppose patternLength is length(pattern).
+    suppose lps is [0]. 
+    suppose length_of_prefix is 0. 
+    suppose i is 1.
+
+    while (i below patternLength) {
+        if (pattern[i] equals pattern[length_of_prefix]) {
+            suppose length_of_prefix is length_of_prefix plus 1.
+            suppose lps is pushArrayElement(lps, length_of_prefix).
+            suppose i is i plus 1.
+        } else {
+            if (length_of_prefix nequals 0) {
+                suppose length_of_prefix is lps[length_of_prefix minus 1]. 
+            } else {
+                suppose lps is pushArrayElement(lps, 0).
+                suppose i is i plus 1.
+            }
+        }
+    }
+    return lps.
+}
+
+suppose kmpSearch is compose(text, pattern) {
+    suppose textLength is length(text).
+    suppose patternLength is length(pattern).
+
+    if (patternLength equals 0) {
+        return 0. 
+    }
+
+    suppose lps is computePrefixFunction(pattern).
+    suppose textIndex is 0.
+    suppose patternIndex is 0.
+
+    while (textIndex below textLength) {
+        if (pattern[patternIndex] equals text[textIndex]) {
+            suppose patternIndex is patternIndex plus 1.
+            suppose textIndex is textIndex plus 1.
+        }
+
+        if (patternIndex equals patternLength) {
+            print("Pattern found at index " plus (textIndex minus patternIndex)).
+            suppose patternIndex is lps[patternIndex minus 1]. 
+        } else {
+            if (textIndex below textLength and pattern[patternIndex] nequals text[textIndex]) {
+                if (patternIndex nequals 0) {
+                    suppose patternIndex is lps[patternIndex minus 1]. 
+                } else {
+                    suppose textIndex is textIndex plus 1.
+                }
+            }
+        }
+    }
+    
+}
+
+print("Enter text:").
+suppose textString is inputText().
+print("Enter pattern to search:").
+suppose patternString is inputText().
+
+suppose textArray is stringToArray(textString).
+suppose patternArray is stringToArray(patternString).
+
+kmpSearch(textArray, patternArray).
+
+print("Finished KMP Algorithm.").

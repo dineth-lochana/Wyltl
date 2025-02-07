@@ -1,0 +1,36 @@
+print("Binary Search with Wyltl").
+
+suppose myArray is [minus 99,minus 3, minus 2, 1, 2, 4, 4, 5, 8, 9, 999, 9999].
+print(myArray).
+
+print("Enter the number to search for:").
+// Hardcode values.
+suppose target is 8.
+
+suppose low is 0.
+suppose high is length(myArray) minus 1.
+suppose foundIndex is minus 1. 
+
+while (low equals high or low below high) {
+    suppose mid is (low plus high) over 2. 
+    print("Checking middle index: " plus mid).
+    if (myArray[mid] equals target) {
+        suppose foundIndex is mid.
+        print("Target found at index: " plus foundIndex).
+        suppose low is high plus 1. 
+    } else {
+        if (myArray[mid] below target) {
+            suppose low is mid plus 1.
+            print("Target might be in the right half").
+        } else { 
+            suppose high is mid minus 1.
+            print("Target might be in the left half").
+        }
+    }
+}
+
+if (foundIndex equals minus 1) {
+    print("Target number not found in the array.").
+}
+
+print("Finished Binary Search.").

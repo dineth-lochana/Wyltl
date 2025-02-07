@@ -1,0 +1,56 @@
+print("Quicksort with Wyltl").
+
+suppose quicksort is compose(myArrayToSort) {
+    if (length(myArrayToSort) below 2) {
+        return myArrayToSort.
+    } else {
+        suppose pivot is myArrayToSort[0]. 
+        suppose less is [].
+        suppose equal is [].
+        suppose greater is [].
+
+        suppose i is 0.
+        while (i below length(myArrayToSort)) {
+            if (myArrayToSort[i] below pivot) {
+                suppose less is pushArrayElement(less, myArrayToSort[i]).
+            } else {
+                if (myArrayToSort[i] equals pivot) {
+                    suppose equal is pushArrayElement(equal, myArrayToSort[i]).
+                } else {
+                    suppose greater is pushArrayElement(greater, myArrayToSort[i]).
+                }
+            }
+            suppose i is i plus 1.
+        }
+
+        suppose sortedLess is quicksort(less).
+        suppose sortedGreater is quicksort(greater).
+
+        
+        suppose combinedArray is sortedLess.
+        suppose i_equal is 0.
+        while(i_equal below length(equal)){
+            suppose combinedArray is pushArrayElement(combinedArray, equal[i_equal]).
+            suppose i_equal is i_equal plus 1.
+        }
+        suppose i_greater is 0.
+        while(i_greater below length(sortedGreater)){
+             suppose combinedArray is pushArrayElement(combinedArray, sortedGreater[i_greater]).
+             suppose i_greater is i_greater plus 1.
+        }
+
+
+        return combinedArray.
+    }
+}
+
+suppose myArrayToSortQS is [5, 1, 4, 2, 8, minus 3, 9, 4, minus 10, 22, 1, 55, minus 2].
+print("Unsorted array for Quicksort:").
+print(myArrayToSortQS).
+
+suppose sortedArrayQS is quicksort(myArrayToSortQS).
+
+print("Sorted array using Quicksort:").
+print(sortedArrayQS).
+
+print("Finished Quicksort.").

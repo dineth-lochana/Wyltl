@@ -1,0 +1,28 @@
+print("Bubble Sort with Wyltl").
+
+suppose myArray is [5, 1, 4, 2, 8].
+print("Unsorted array:").
+print(myArray).
+
+suppose n is length(myArray).
+suppose outerCount is 0.
+
+while (outerCount below n minus 1) {
+    suppose innerCount is 0.
+    
+    while (innerCount below n minus outerCount minus 1) {
+        if (myArray[innerCount] above myArray[innerCount plus 1]) {
+            suppose temp is myArray[innerCount]. 
+            suppose myArray is changeArrayElement(myArray, innerCount, myArray[innerCount plus 1]).
+            suppose myArray is changeArrayElement(myArray, innerCount plus 1, temp).
+        }
+        suppose innerCount is innerCount plus 1.
+    }
+    
+    suppose outerCount is outerCount plus 1.
+}
+
+print("Sorted array:").
+print(myArray).
+
+

@@ -1,0 +1,79 @@
+print("Dijkstra's Algorithm in Wyltl").
+
+suppose findMinDistanceNode is compose(dist, visited, numNodes) {
+    suppose minDistance is 99999.
+    suppose minIndex is minus 1.
+    suppose v is 0.
+    while (v below numNodes) {
+        if (visited[v] equals 0 and dist[v] below minDistance) {
+            suppose minDistance is dist[v].
+            suppose minIndex is v.
+        }
+        suppose v is v plus 1.
+    }
+    return minIndex.
+}
+
+suppose dijkstra is compose(graph, source, numNodes) {
+    suppose dist is [].
+    suppose visited is [].
+
+    suppose i is 0.
+    while (i below numNodes) {
+        suppose dist is pushArrayElement(dist, 99999). 
+        suppose visited is pushArrayElement(visited, 0).
+        suppose i is i plus 1.
+    }
+
+    suppose dist is changeArrayElement(dist, source, 0). 
+
+    suppose count is 0.
+    while (count below numNodes minus 1) {
+        suppose u is findMinDistanceNode(dist, visited, numNodes). 
+        if (u equals minus 1) { 
+            return dist.
+        }
+        suppose visited is changeArrayElement(visited, u, 1). 
+
+        suppose v is 0.
+        while (v below numNodes) {
+            if (visited[v] equals 0) { 
+                if (graph[u][v] below 99999 and graph[u][v] above 0) { 
+                    if (dist[u] plus graph[u][v] below dist[v]) { 
+                        suppose dist is changeArrayElement(dist, v, dist[u] plus graph[u][v]). 
+                    }
+                }
+            }
+            suppose v is v plus 1.
+        }
+        suppose count is count plus 1.
+    }
+    return dist.
+}
+
+print("Dijkstra's Algorithm Example").
+
+suppose graph is [
+    [0, 4, 0, 0, 0, 0, 0, 8, 0],
+    [4, 0, 8, 0, 0, 0, 0, 11, 0],
+    [0, 8, 0, 7, 0, 4, 0, 0, 2],
+    [0, 0, 7, 0, 9, 14, 0, 0, 0],
+    [0, 0, 0, 9, 0, 10, 0, 0, 0],
+    [0, 0, 4, 14, 10, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 2, 0, 1, 6],
+    [8, 11, 0, 0, 0, 0, 1, 0, 7],
+    [0, 0, 2, 0, 0, 0, 6, 7, 0]
+].
+
+suppose sourceNode is 0.
+suppose numNodes is length(graph).
+
+suppose shortestDistances is dijkstra(graph, sourceNode, numNodes).
+
+print("Shortest distances from source node " plus sourceNode plus ":").
+suppose i is 0.
+while (i below numNodes) {
+    print("Node " plus i plus ": " plus shortestDistances[i]).
+    suppose i is i plus 1.
+}
+print("Finished Dijkstra's Algorithm.").

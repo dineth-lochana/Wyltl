@@ -1,0 +1,62 @@
+print("Breadth-First Search (BFS) in Wyltl").
+
+suppose bfs is compose(graph, startNode, numNodes) {
+  suppose visited is [].
+  suppose queue is [].
+  suppose bfsResult is [].
+
+  suppose i is 0.
+  while (i below numNodes) {
+    suppose visited is pushArrayElement(visited, 0).
+    suppose i is i plus 1.
+  }
+  suppose queue is pushArrayElement(queue, startNode).
+  suppose visited is changeArrayElement(visited, startNode, 1).
+
+  while (length(queue) above 0) {
+    suppose currentNode is queue[0].
+    suppose queue is removeFirstElement(queue). 
+    suppose bfsResult is pushArrayElement(bfsResult, currentNode).
+    print("Visiting node: " plus currentNode).
+    suppose neighborNode is 0.
+    while (neighborNode below numNodes) {
+      if (graph[currentNode][neighborNode] equals 1 and visited[neighborNode] equals 0) {
+        suppose queue is pushArrayElement(queue, neighborNode).
+        suppose visited is changeArrayElement(visited, neighborNode, 1).
+      }
+      suppose neighborNode is neighborNode plus 1.
+    }
+  }
+  return bfsResult.
+}
+
+suppose removeFirstElement is compose(array) {
+  suppose newArray is [].
+  suppose index is 1.
+  while (index below length(array)) {
+    suppose newArray is pushArrayElement(newArray, array[index]).
+    suppose index is index plus 1.
+  }
+  return newArray.
+}
+
+print("Example Graph (Adjacency Matrix):").
+suppose graphBFS is [
+  [0, 1, 1, 0, 0],
+  [1, 0, 0, 1, 0],
+  [1, 0, 0, 0, 1],
+  [0, 1, 0, 0, 0],
+  [0, 0, 1, 0, 0]
+].
+print(graphBFS).
+
+suppose startNodeBFS is 0.
+suppose numNodesBFS is length(graphBFS).
+
+print("BFS Traversal starting from node " plus startNodeBFS plus ":").
+suppose bfsTraversalResult is bfs(graphBFS, startNodeBFS, numNodesBFS).
+
+print("BFS Traversal Order:").
+print(bfsTraversalResult).
+
+print("Finished Breadth-First Search (BFS).").

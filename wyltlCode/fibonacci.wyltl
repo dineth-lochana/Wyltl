@@ -1,0 +1,12 @@
+suppose fibonacci is compose(x) {
+  if (x equals 0) {
+     return 0.
+  } else {
+    if (x equals 1) {
+      return 1.
+    } else {
+      fibonacci(x minus 1) plus fibonacci(x minus 2).
+    }
+  }
+}.
+fibonacci(15).

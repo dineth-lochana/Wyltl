@@ -1,0 +1,25 @@
+print("Palindrome checking with Wyltl").
+
+print("Enter a word to check if it's a palindrome:").
+suppose inputWord is inputText(). 
+
+suppose rString is compose(word) {
+    suppose wordArray is stringToArray(word).
+    suppose reversedArray is [].
+    suppose wordLength is length(wordArray).
+    suppose index is wordLength minus 1.
+    while (index above minus 1) { 
+      suppose reversedArray is pushArrayElement(reversedArray, wordArray[index]).
+      suppose index is index minus 1.
+    }
+    suppose reversedWord is arrayToString(reversedArray).
+    print(reversedWord).
+    return reversedWord.
+}
+
+suppose reversedInput is rString(inputWord).
+if (inputWord equals reversedInput) {
+  print(inputWord plus " is a palindrome.").
+} else {
+  print(inputWord plus " is not a palindrome.").
+}

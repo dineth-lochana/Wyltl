@@ -1,0 +1,82 @@
+print("Prim's Minimum Spanning Tree Algorithm in Wyltl").
+
+suppose primMST is compose(graph, numNodes) {
+    suppose parent is []. 
+    suppose key is [].    
+    suppose mstSet is []. 
+
+    
+    suppose i_init is 0.
+    while(i_init below numNodes) {
+        suppose key is pushArrayElement(key, 99999). 
+        suppose mstSet is pushArrayElement(mstSet, 0). 
+        suppose parent is pushArrayElement(parent, minus 1). 
+        suppose i_init is i_init plus 1.
+    }
+
+    suppose key is changeArrayElement(key, 0, 0). 
+    suppose parent is changeArrayElement(parent, 0, minus 1). 
+    suppose edgeCount is 0.
+    while (edgeCount below numNodes minus 1) { 
+        suppose u is minKeyNode(key, mstSet, numNodes). 
+
+        if (u equals minus 1) { 
+            return parent.
+        }
+
+        suppose mstSet is changeArrayElement(mstSet, u, 1).
+
+        suppose v is 0.
+        while (v below numNodes) {
+            if (graph[u][v] above 0 and graph[u][v] below 99999 and mstSet[v] equals 0 and graph[u][v] below key[v]) {
+                suppose parent is changeArrayElement(parent, v, u).
+                suppose key is changeArrayElement(key, v, graph[u][v]).
+            }
+            suppose v is v plus 1.
+        }
+        suppose edgeCount is edgeCount plus 1.
+    }
+
+    return parent. 
+}
+
+suppose minKeyNode is compose(key, mstSet, numNodes) {
+    suppose minVal is 99999.
+    suppose minIndex is minus 1.
+
+    suppose v is 0.
+    while (v below numNodes) {
+        if (mstSet[v] equals 0 and key[v] below minVal) {
+            suppose minVal is key[v].
+            suppose minIndex is v.
+        }
+        suppose v is v plus 1.
+    }
+    return minIndex.
+}
+
+
+print("Example Graph (Adjacency Matrix for Prim's):").
+suppose graphPrim is [
+    [0, 2, 0, 6, 0],
+    [2, 0, 3, 8, 5],
+    [0, 3, 0, 0, 7],
+    [6, 8, 0, 0, 9],
+    [0, 5, 7, 9, 0]
+].
+print(graphPrim).
+
+suppose numNodesPrim is length(graphPrim).
+
+suppose mstParentArray is primMST(graphPrim, numNodesPrim).
+
+print("MST Parent Array (representing MST edges):").
+print(mstParentArray).
+
+print("MST Edges (based on parent array):").
+suppose i_edge is 1
+while(i_edge below numNodesPrim) {
+    print("Edge: (" plus mstParentArray[i_edge] plus ", " plus i_edge plus ") Weight: " plus graphPrim[i_edge][mstParentArray[i_edge]]).
+    suppose i_edge is i_edge plus 1.
+}
+print("Finished Prim's MST Algorithm.").

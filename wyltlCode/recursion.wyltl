@@ -1,0 +1,8 @@
+suppose simpleRecurse is compose(n) {
+ print(n).
+ if (n above 0) {
+    simpleRecurse(n minus 1).
+}
+ 
+}
+ simpleRecurse(5).

@@ -1,0 +1,32 @@
+print("Insertion Sort with Wyltl").
+
+suppose myArrayToSort is [5, 1, 4, 2, 8, minus 3, 9, 4].
+print("Unsorted array for Insertion Sort:").
+print(myArrayToSort).
+
+suppose nSort is length(myArrayToSort).
+suppose outerSortCount is 1.
+
+while (outerSortCount below nSort) {
+    suppose currentElement is myArrayToSort[outerSortCount].
+    suppose innerSortCount is outerSortCount minus 1.
+    suppose keepLooping is 1.
+    
+    while (keepLooping equals 1) {
+        if (innerSortCount above minus 1) {
+            if (myArrayToSort[innerSortCount] above currentElement) {
+                suppose myArrayToSort is changeArrayElement(myArrayToSort, innerSortCount plus 1, myArrayToSort[innerSortCount]).
+                suppose innerSortCount is innerSortCount minus 1.
+            } else {
+                suppose keepLooping is 0.
+            }
+        } else {
+            suppose keepLooping is 0.
+        }
+    }
+    suppose myArrayToSort is changeArrayElement(myArrayToSort, innerSortCount plus 1, currentElement).
+    suppose outerSortCount is outerSortCount plus 1.
+}
+
+print("Sorted array using Insertion Sort:").
+print(myArrayToSort).
