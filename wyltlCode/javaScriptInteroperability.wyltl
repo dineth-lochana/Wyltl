@@ -1,0 +1,63 @@
+print("Wyltl Web Page Interaction Scripts with Persistent Variables!")
+print("(Variables are stored as properties of 'window' object)")
+
+
+// Displaying an Alert Box
+print("Displaying a simple alert...")
+executeJavaScript("alert('Hello from Wyltl using persistent window variables!');")
+print("Alert displayed (hopefully!).")
+
+
+// Creating a Button (Persistent Variable)
+print("Creating a button that says 'Persistent Button' and alerts a message...")
+executeJavaScript("window.wyltlButton = document.createElement('button');") 
+executeJavaScript("window.wyltlButton.textContent = 'Persistent Button!';") 
+executeJavaScript("window.wyltlButton.style.padding = '10px 20px';")
+executeJavaScript("window.wyltlButton.style.fontSize = '16px';")
+executeJavaScript("window.wyltlButton.style.backgroundColor = '#007BFF';")
+executeJavaScript("window.wyltlButton.style.color = 'white';")
+executeJavaScript("window.wyltlButton.style.border = 'none';")
+executeJavaScript("window.wyltlButton.style.borderRadius = '5px';")
+executeJavaScript("window.wyltlButton.style.cursor = 'pointer';")
+executeJavaScript("window.wyltlButton.onclick = function() { alert('Persistent Button Clicked! Variable is stored in window!'); };")
+executeJavaScript("window.document.body.appendChild(window.wyltlButton);")
+
+
+// Getting and Displaying Page Title 
+print("Fetching the current page title...")
+suppose pageTitle is executeJavaScript("window.document.title;")
+print("Current Page Title: " plus pageTitle)
+print("Page title displayed.")
+
+
+//Creating a Simple Text Input (Persistent Variable) and Displaying Input
+print("Creating a text input field...")
+executeJavaScript("window.wyltlInput = document.createElement('input');") 
+executeJavaScript("window.wyltlInput.type = 'text';")
+executeJavaScript("window.wyltlInput.id = 'wyltlTextInput';")
+executeJavaScript("window.wyltlInput.placeholder = 'Enter text persistently';")
+executeJavaScript("window.wyltlInput.style.padding = '8px';")
+executeJavaScript("window.wyltlInput.style.margin = '10px';")
+executeJavaScript("window.document.body.appendChild(window.wyltlInput);") 
+print("Input field created (as window.wyltlInput). Please enter some text in the input box.")
+suppose inputTextValue is inputText("Enter text you see in the input box: ")
+suppose jsSetInputValue is "window.document.getElementById('wyltlTextInput').value = '" plus inputTextValue plus "';"
+executeJavaScript(jsSetInputValue)
+print("You entered in Wyltl Input: " plus inputTextValue)
+
+
+// Adding Dynamic Text Content (Persistent Variable)
+print("Adding a paragraph with text 'Hello from Wyltl persistent vars!'...")
+executeJavaScript("window.wyltlParagraph = document.createElement('p');") 
+executeJavaScript("window.wyltlParagraph.textContent = 'Hello from Wyltl! This persistent text was dynamically added.';")
+executeJavaScript("window.document.body.appendChild(window.wyltlParagraph);")
+print("Paragraph added to the page (as window.wyltlParagraph).")
+
+
+//Demonstrating Persistence - Changing Button Text
+print("Changing the 'Persistent Button' text to 'Text Changed!'...")
+executeJavaScript("window.wyltlButton.textContent = 'Text Changed!';")
+print("Button text changed. This demonstrates persistent storage.")
+
+
+print("Finished Wyltl Web Interaction Scripts with Persistent Variables.")
