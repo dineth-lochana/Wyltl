@@ -213,6 +213,40 @@
 				output.value += Array.from(arguments).join(" ") + "\n";
 				originalConsoleLog.apply(console, arguments);
 			};
+
+		function getUrlParameter(name) {
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			const results = regex.exec(location.search);
+			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		}
+
+		function loadExampleFile(filename) {
+			if (filename) {
+				fetch(`./wyltlCode/${filename}`)
+					.then(response => response.text())
+					.then(code => {
+						updateTextAreaContent(document.getElementById("input"), code);
+						
+						const selectElement = document.getElementById("exampleSelector");
+						for (let i = 0; i < selectElement.options.length; i++) {
+							if (selectElement.options[i].value === filename) {
+								selectElement.selectedIndex = i;
+								break;
+							}
+						}
+					})
+					.catch(error => console.error("Error loading example:", error));
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", function() {
+			const fileParam = getUrlParameter('file');
+			if (fileParam) {
+				loadExampleFile(fileParam);
+			}
+		});
+
 		</script>
 
 	</div>
