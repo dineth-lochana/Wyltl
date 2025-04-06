@@ -1,0 +1,17 @@
+suppose x is 1.
+suppose y is inputNumber("How many Loops?").
+suppose name is inputText("Enter name").
+
+if (name equals "Dineth") {
+  print("Hey I'm Dineth too!")
+} else {
+  while(x below y) {
+    print("Hello " plus name)
+    suppose x is x plus 1.
+  }
+}
+
+suppose wellWisher is compose(input){
+  print("Have a nice day " plus input)
+}
+wellWisher(name).
