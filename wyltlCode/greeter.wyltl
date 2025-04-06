@@ -15,3 +15,8 @@ suppose wellWisher is compose(input){
   print("Have a nice day " plus input)
 }
 wellWisher(name).
+
+suppose nameArray is stringToArray(name).
+for(suppose count is 0 : count below length(name) : suppose count is count plus 1) {
+   print(nameArray[count])
+} 
